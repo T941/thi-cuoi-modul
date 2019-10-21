@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Danh Sach San Pham</h1>
+<form>
+    Search by name:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    <th:block th:each="product : ${products}">
+        <tr>
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.amount}"></td>
+            <td th:text="${product.date}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.typeProduct.name}"></td>
+            <td><a th:href="@{/edit-product/__${product.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-product/__${product.id}__ }">Delete</a></td>
+
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
